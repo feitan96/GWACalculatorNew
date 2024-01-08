@@ -115,11 +115,10 @@ button:hover {
   font-size: 24px; /* Adjust the font size as needed */
 }
 
-button {
-  position: fixed;
-  bottom: 35px;
+.signout-button {  position: fixed;
+  top: 35px;
   right: 35px;
-  background-color: #0d252b; /* Set your preferred background color */
+  background-color: #282c34; /* Set your preferred background color */
   color: #ffffff; /* Set your preferred text color */
   padding: 8px 20px;
   font-size: 16px;
@@ -131,7 +130,7 @@ button {
 
 
 button:hover {
-  background-color: #4fa3d1;
+  background-color: #0d252b;
 }
 
 @media (max-width: 600px) {

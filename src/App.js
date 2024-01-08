@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import { jwtDecode } from 'jwt-decode';
+import GwaCalculator from './GwaCalculator'; // Import the new component
 
 import './App.css';
 
 function App() {
   const [user, setUser] = useState({});
+  const [showCalculator, setShowCalculator] = useState(false);
 
   function handleCallbackResponse(response) {
     console.log('Encoded JWT ID token: ' + response.credential);
     var userObject = jwtDecode(response.credential);
     console.log(userObject);
     setUser(userObject);
+    setShowCalculator(true); // Show the calculator after signing in
     document.getElementById('signInDiv').hidden = true;
   }
 
   function handleSignOut(event) {
     setUser({});
+    setShowCalculator(false); // Hide the calculator after signing out
     const signInDiv = document.getElementById('signInDiv');
     if (signInDiv) {
       signInDiv.hidden = false;
@@ -44,18 +48,23 @@ function App() {
       <header className="App-header">
         {Object.keys(user).length !== 0 ? (
           <div className="user-profile">
-            <div className="user-info">
-              <img src={user.picture} alt="user-profile-pic" />
-              <h3 className="user-name">{user.name}</h3>
-            </div>
-            <button onClick={(e) => handleSignOut(e)}>Sign Out</button>
+          <div className="user-info">
+            <img src={user.picture} alt="user-profile-pic" />
+            <h3 className="user-name">{user.name}</h3>
           </div>
+          <button className="signout-button" onClick={(e) => handleSignOut(e)}>Sign Out</button>
+        </div>        
         ) : (
           <>
             <img src={logo} className="App-logo" alt="logo" />
             <p>We calculate your grades for you!</p>
             <div id="signInDiv"></div>
           </>
+        )}
+
+        {/* Conditionally render GWA Calculator */}
+        {Object.keys(user).length !== 0 && showCalculator && (
+          <GwaCalculator />
         )}
       </header>
     </div>
