@@ -47,8 +47,9 @@ h1 {
 
 .generate-boxes-button,
 .calculate-gwa-button {
-  width: 100%;
+  width: 75%;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #calculateGWA,
@@ -70,7 +71,6 @@ h1 {
 
 .calculate-gwa-button {
   position: static;
-  width: 100%;
   margin-top: 10px;
   background-color: #4caf50;
   color: #ffffff;
@@ -87,23 +87,42 @@ h1 {
   justify-content: space-between;
 }
 
-.quote {
-  font-style: italic;
-  color: #888;
-  margin-top: 20px;
-  font-size: 18px; /* Adjust font size for smaller screens */
+.gwa-value {
+  color: #4caf50;
+  font-size: 36px; 
+  font-weight: bold; 
+  margin-top: 20px; 
 }
 
 .result-success {
   font-weight: bold;
   margin-top: 20px;
-  color: #4caf50; /* Set your preferred color for success messages */
+  color: #4caf50; 
 }
 
 .result-error {
   font-weight: bold;
   margin-top: 20px;
-  color: #f44336; /* Set your preferred color for error messages */
+  color: #f44336; 
+}
+
+.quote {
+  font-style: italic;
+  color: #888;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  font-size: 18px; 
+}
+
+.copyright {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #888;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #generateBoxes,
@@ -123,7 +142,7 @@ h1 {
 
   .generate-boxes-button,
   .calculate-gwa-button {
-    width: 100%;
+    width: 90%;
     margin-top: 10px;
   }
 
@@ -135,4 +154,22 @@ h1 {
   .gwa-title {
     margin-bottom: 10px;
   }
+}
+
+@keyframes popin {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.popin {
+  animation: popin 2s ease-out;
 }

@@ -4,6 +4,8 @@ import './GwaCalculator.css';
 
 function GwaCalculator() {
   const [result, setResult] = useState('');
+  const [animate, setAnimate] = useState(false);
+
 
   const handleGenerateBoxes = () => {
     setResult('');
@@ -63,6 +65,7 @@ function GwaCalculator() {
     if (totalUnits > 0) {
       const gwa = totalWeightedPoints / totalUnits;
       setResult(`Your GWA is: ${gwa.toFixed(2)}`);
+      setAnimate(true);
     } else {
       setResult("Generate boxes first");
     }
@@ -70,9 +73,14 @@ function GwaCalculator() {
 
   useEffect(() => {
     if (result.includes("Your GWA is")) {
-      // No need to trigger confetti here; it's handled in Confetti.js
     }
   }, [result]);
+
+  useEffect(() => {
+    if (animate) {
+      setTimeout(() => setAnimate(false), 2000);
+    }
+  }, [animate]);  
 
   function centerBoxes(subjectCount) {
     const rows = document.querySelectorAll(".row-container");
@@ -102,18 +110,28 @@ function GwaCalculator() {
       <button className="calculate-gwa-button" onClick={handleCalculateGWA}>
         Calculate GWA
       </button>
-
+  
       {/* Apply different classNames based on the content of the result */}
-      <div id="result" className={result.includes("Your GWA is") ? 'result-success' : 'result-error'}>
-        {result}
-      </div>
+      {result.includes("Your GWA is") ? (
+        <div id="result" className={`result-success ${animate ? 'popin' : ''}`}>
+          <div>Your GWA is:</div>
+          <div className="gwa-value">{result.replace("Your GWA is: ", "")}</div>
+        </div>
+      ) : (
+        <div id="result" className='result-error'>
+          {result}
+        </div>
+      )}
 
-      <p className="quote">Grades do not define who you are!</p>
-
+  
+      <p className="quote">Grades can't show every amazing quality you have!</p>
+  
       {/* Conditionally render the Confetti component */}
       {result.includes("Your GWA is") && <Confetti />}
+      <p className="copyright">© {new Date().getFullYear()} KJ Desierto. All rights reserved.</p>
     </div>
   );
+  
 }
 
 export default GwaCalculator;
