@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import { jwtDecode } from 'jwt-decode';
-import GwaCalculator from './GwaCalculator'; // Import the new component
+import GwaCalculator from './GwaCalculator'; 
 
 import './App.css';
 
@@ -18,14 +18,18 @@ function App() {
     document.getElementById('signInDiv').hidden = true;
   }
 
-  function handleSignOut(event) {
+  function handleSignOut() {
     setUser({});
     setShowCalculator(false); // Hide the calculator after signing out
     const signInDiv = document.getElementById('signInDiv');
     if (signInDiv) {
       signInDiv.hidden = false;
     }
-  }  
+    
+    // Reload the page
+    window.location.reload();
+  }
+   
   
 
   useEffect(() => {
@@ -47,17 +51,19 @@ function App() {
     <div className="App">
       <header className="App-header">
         {Object.keys(user).length !== 0 ? (
-          <div className="user-profile">
-          <div className="user-info">
-            <img src={user.picture} alt="user-profile-pic" />
-            <h3 className="user-name">{user.name}</h3>
+          <div>
+            <div className="user-profile">
+              <div className="user-info">
+                <img src={user.picture} alt="user-profile-pic" />
+                <h3 className="user-name">{user.name}</h3>
+              </div>
+            </div>        
+            <button className="signout-button" onClick={(e) => handleSignOut(e)}>Sign Out</button>
           </div>
-          <button className="signout-button" onClick={(e) => handleSignOut(e)}>Sign Out</button>
-        </div>        
         ) : (
           <>
             <img src={logo} className="App-logo" alt="logo" />
-            <p>We calculate your grades for you!</p>
+            <p className='sign-in-moto'>We calculate your grades for you!</p>
             <div id="signInDiv"></div>
           </>
         )}

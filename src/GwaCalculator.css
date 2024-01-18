@@ -1,114 +1,138 @@
 /* GwaCalculator.css */
 .gwa-calculator {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 20px;
-    background-color: #282c34;
-    font-size: 28px;
-  }
-  
-  h1 {
-    margin-bottom: 20px;
-  }
-  
-  #subjectCount,
-  #generateBoxes {
-    margin: 10px;
-    height: 1.5em;
-    font-size: 16px; /* Adjust the font size as needed */
-  }
-  
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  background-color: #282c34;
+  font-size: 24px;
+}
+
+.gwa-title {
+  font-size: 36px;
+  margin-bottom: 10px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+#subjectCount,
+#generateBoxes {
+  margin: 10px;
+  height: 1.5em;
+  font-size: 16px;
+}
 
 .subject-box {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
-    background-color: #231f31;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    font-size: 20px; /* Adjust the font size as needed */
-    width: 245px; /* Adjust the width of the subject boxes */
-    height: 120px; /* Adjust the height of the subject boxes */
-  }
-  
-  .subject-box input {
-    font-size: 20px; /* Adjust the font size inside the textboxes as needed */
-    font-weight: normal; /* Adjust the font weight inside the textboxes as needed */
-    width: 50px; /* Adjust the width of the input elements for grades and units */
-    margin-top: 5px; /* Adjust the margin as needed */
-  }
-  
-  
-  #calculateGWA {
-    margin-top: 20px;
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  #calculateGWA:hover {
-    background-color: #45a049;
-  }
-  
-  #result {
-    margin-top: 20px;
-    font-weight: bold;
-    color: #ffffff;
-    border-radius: 5px;
-  }
-  
-  .quote {
-    font-style: italic;
-    color: #888;
-    margin-top: 20px;
-    font-size: 20px; /* Adjust the font size as needed */
-  }
-  
-  .generate-boxes-button {
-    margin-top: 10px; /* Add margin-top to separate from the input */
-    background-color: #0d252b; /* Set your preferred background color */
-    color: #ffffff; /* Set your preferred text color */
-    padding: 8px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .generate-boxes-button:hover {
-    background-color: #4fa3d1; /* Set your preferred hover background color */
-  }
-  .calculate-gwa-button {
-    position: fixed;
-    bottom: 35px; /* adjust as needed */
-    right: 35px;
-    background-color: #4caf50; /* Set your preferred background color */
-    color: #ffffff; /* Set your preferred text color */
-    padding: 8px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  background-color: #231f31;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  font-size: 20px;
+  width: 50%;
+  height: auto;
+}
 
-  #button-container {
-    display: flex;
-    justify-content: space-between;
+.subject-box input {
+  font-size: 20px;
+  font-weight: normal;
+  width: 50px;
+  margin-top: 5px;
+}
+
+.generate-boxes-button,
+.calculate-gwa-button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+#calculateGWA,
+.generate-boxes-button {
+  background-color: #0d252b;
+  color: #ffffff;
+  padding: 8px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#calculateGWA:hover,
+.generate-boxes-button:hover {
+  background-color: #45a049;
+}
+
+.calculate-gwa-button {
+  position: static;
+  width: 100%;
+  margin-top: 10px;
+  background-color: #4caf50;
+  color: #ffffff;
+  padding: 8px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.quote {
+  font-style: italic;
+  color: #888;
+  margin-top: 20px;
+  font-size: 18px; /* Adjust font size for smaller screens */
+}
+
+.result-success {
+  font-weight: bold;
+  margin-top: 20px;
+  color: #4caf50; /* Set your preferred color for success messages */
+}
+
+.result-error {
+  font-weight: bold;
+  margin-top: 20px;
+  color: #f44336; /* Set your preferred color for error messages */
+}
+
+#generateBoxes,
+#calculateGWA {
+  width: 25%;
+}
+
+#calculateGWA {
+  margin-left: auto;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .subject-box input{
+    width: 100%;
   }
-  
-  #generateBoxes,
-  #calculateGWA {
-    width: 25%; /* Adjust the width as needed */
-  }
-  
-  #calculateGWA {
-    margin-left: auto; /* Align to the right */
+
+  .generate-boxes-button,
+  .calculate-gwa-button {
+    width: 100%;
     margin-top: 10px;
   }
-  
+
+  .calculate-gwa-button {
+    margin-top: 20px;
+    margin-right: 0;
+  }
+
+  .gwa-title {
+    margin-bottom: 10px;
+  }
+}

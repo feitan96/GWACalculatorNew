@@ -1,4 +1,3 @@
-// GwaCalculator.js
 import React, { useState, useEffect } from 'react';
 import Confetti from './Confetti';
 import './GwaCalculator.css';
@@ -7,6 +6,7 @@ function GwaCalculator() {
   const [result, setResult] = useState('');
 
   const handleGenerateBoxes = () => {
+    setResult('');
     const subjectCount = parseInt(document.getElementById("subjectCount").value);
     const subjectBoxes = document.getElementById("subjectBoxes");
 
@@ -55,7 +55,7 @@ function GwaCalculator() {
         totalWeightedPoints += units * grade;
         totalUnits += units;
       } else {
-        setResult("Enter valid grades and units.");
+        setResult("Enter valid grades and units");
         return;
       }
     }
@@ -64,7 +64,7 @@ function GwaCalculator() {
       const gwa = totalWeightedPoints / totalUnits;
       setResult(`Your GWA is: ${gwa.toFixed(2)}`);
     } else {
-      setResult("Enter valid grades and units.");
+      setResult("Generate boxes first");
     }
   };
 
@@ -92,7 +92,7 @@ function GwaCalculator() {
 
   return (
     <div className="gwa-calculator">
-      <h1>GWA Calculator</h1>
+      <h1 className='gwa-title'>GWA Calculator</h1>
       <label htmlFor="subjectCount">Number of Subjects:</label>
       <input type="number" id="subjectCount" min="1" />
       <button className="generate-boxes-button" onClick={handleGenerateBoxes}>
@@ -102,9 +102,14 @@ function GwaCalculator() {
       <button className="calculate-gwa-button" onClick={handleCalculateGWA}>
         Calculate GWA
       </button>
-      <div id="result">{result}</div>
+
+      {/* Apply different classNames based on the content of the result */}
+      <div id="result" className={result.includes("Your GWA is") ? 'result-success' : 'result-error'}>
+        {result}
+      </div>
+
       <p className="quote">Grades do not define who you are!</p>
-      
+
       {/* Conditionally render the Confetti component */}
       {result.includes("Your GWA is") && <Confetti />}
     </div>
